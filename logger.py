@@ -101,14 +101,14 @@ def log_state():
 
     entry = {
         "timestamp": now.strftime("%H:%M:%S.%f")[:-3],
-        "elapsed_s": math.floor((now - _start_time).total_seconds()),
+        "elapsed_s": (now - _start_time).total_seconds(),
         "frame": _frame_count,
         "screen_size": screen_size,
         **game_state,
     }
 
-    # New log file on each run
-    mode = "w" if not _state_log_initialized else "a"
+    # Append to log file on each run
+    mode = "a" if not _state_log_initialized else "a"
     with open("game_state.jsonl", mode) as f:
         f.write(json.dumps(entry) + "\n")
 
@@ -128,7 +128,7 @@ def log_event(event_type, **details):
         **details,
     }
 
-    mode = "w" if not _event_log_initialized else "a"
+    mode = "a" if not _event_log_initialized else "a"
     with open("game_events.jsonl", mode) as f:
         f.write(json.dumps(event) + "\n")
 
