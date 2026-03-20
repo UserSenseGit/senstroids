@@ -6,6 +6,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+from player import PLAYER_SHOOT_COOLDOWN_SECONDS
 
 def main():
     pygame.init()   
