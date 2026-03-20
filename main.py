@@ -6,7 +6,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
-from player import PLAYER_SHOOT_COOLDOWN_SECONDS
+
 
 def main():
     pygame.init()   
@@ -52,7 +52,15 @@ def main():
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
-            
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid) == True:
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    asteroid.split()
+                    
+                    
+                    
     
        
   
