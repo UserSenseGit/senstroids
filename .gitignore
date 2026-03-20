@@ -10,3 +10,4 @@ wheels/
 .venv
 # Logs get excluded
 game_state.jsonl
+game_events.jsonl
